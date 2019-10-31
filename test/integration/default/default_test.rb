@@ -10,7 +10,20 @@ unless os.windows?
   end
 end
 
+describe service "nginx" do
+  it { should be_running }
+  it { should be_enabled }
+end
+
 # This is an example test, replace it with your own test.
-describe port(80), :skip do
-  it { should_not be_listening }
+describe port(80) do
+  it { should be_listening }
+end
+
+describe port(3000) do
+  it  {should be_listening}
+end
+
+  describe http('http://localhost', enable_remote_worker: true) do
+    its('status') {should cmp 502}
 end

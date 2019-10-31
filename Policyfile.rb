@@ -14,3 +14,10 @@ run_list 'node_3::default'
 
 # Specify a custom source for a single cookbook:
 cookbook 'node_3', path: '.'
+
+# Import cookbooks from supermarket
+
+cookbook 'nodejs'.'~> 6.0.0'
+
+cookbook 'mongodb', '~> 0.16.2', :supermarket
+cookbook 'python', '~> 1.4.6', :supermarket
